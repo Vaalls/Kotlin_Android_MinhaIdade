@@ -64,7 +64,7 @@ fun CounterScreen(){
         Spacer(modifier = Modifier.height(32.dp))
 
         Text(
-            text = "21",
+            text = "$idade",
             fontSize = 48.sp,
             fontWeight = FontWeight.Bold
         )
@@ -73,7 +73,7 @@ fun CounterScreen(){
         
         Row() {
             Button(
-                onClick = {},
+                onClick = {idade--},
                 modifier = Modifier.size(84.dp),
                 shape =  RoundedCornerShape(8.dp),
                 colors = ButtonDefaults.buttonColors(Color(0xFFAD1F4E))
@@ -84,7 +84,7 @@ fun CounterScreen(){
                 )
             }
             Button(
-                onClick = {},
+                onClick = {idade++},
                 modifier = Modifier.size(84.dp),
                 shape = RoundedCornerShape(8.dp),
                 colors = ButtonDefaults.buttonColors(Color(0xFFAD1F4E))
