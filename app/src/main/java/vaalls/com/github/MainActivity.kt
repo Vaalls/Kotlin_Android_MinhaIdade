@@ -17,6 +17,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -45,7 +47,11 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun CounterScreen(){
-    var idade = 0
+
+    var idade = remember {
+        mutableStateOf(0)
+    }
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
@@ -64,7 +70,7 @@ fun CounterScreen(){
         Spacer(modifier = Modifier.height(32.dp))
 
         Text(
-            text = "$idade",
+            text = "${idade.value}",
             fontSize = 48.sp,
             fontWeight = FontWeight.Bold
         )
@@ -73,7 +79,7 @@ fun CounterScreen(){
         
         Row() {
             Button(
-                onClick = {idade--},
+                onClick = {idade.value--},
                 modifier = Modifier.size(84.dp),
                 shape =  RoundedCornerShape(8.dp),
                 colors = ButtonDefaults.buttonColors(Color(0xFFAD1F4E))
@@ -83,8 +89,11 @@ fun CounterScreen(){
                     fontSize = 40.sp
                 )
             }
+
+            Spacer(modifier = Modifier.height(32.dp))
+
             Button(
-                onClick = {idade++},
+                onClick = {idade.value++},
                 modifier = Modifier.size(84.dp),
                 shape = RoundedCornerShape(8.dp),
                 colors = ButtonDefaults.buttonColors(Color(0xFFAD1F4E))
